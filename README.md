@@ -72,7 +72,7 @@ Top: Noisy signal; Bottom: Minimizer of Potts functional (ground truth in red)
 
 ## Plugins for Image Analysis GUIs
    - [Icy plugin](http://icy.bioimageanalysis.org/plugin/Potts_Segmentation) - an interactive image segmentation plugin based on Pottslab (written by Vasileios Angelopoulos)
-   - [ImageJ plugin](http://www.pottslab.de/download/PottsSegmentationJ_.jar) - an ImageJ frontend for Pottslab (written by Michael Kaul) 
+   - [ImageJ plugin](Plugins/PottsSegmentationJ_.jar) - an ImageJ frontend for Pottslab (written by Michael Kaul) 
 
 ## References
 - M. Storath, A. Weinmann, J. Frikel, M. Unser.
