@@ -19,6 +19,10 @@ image segmentation.
 
 Left: A natural image; Right: Result using Potts model
 
+![Vector-valued segmentation](/Docs/texture.png)
+
+Texture segmentation using highdimensional curvelet-based feature vectors 
+
 ### Joint image reconstruction and segmentation
 
 
