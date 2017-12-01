@@ -55,6 +55,9 @@ Left: Shepp-Logan phantom; Center: Filtered backprojection from 7 angular projec
 
 Top: Noisy signal; Bottom: Minimizer of Potts functional (ground truth in red)
 
+Used as step detection algorithm in 
+
+   * A. Nord et al., [Catch bond drives stator mechanosensitivity in the bacterial flagellar motor](http://www.pnas.org/content/early/2017/11/27/1716002114.full), Proceedings of the National Academy of Sciences, 2017
 
 ## Installation 
 ### Quickstart:
