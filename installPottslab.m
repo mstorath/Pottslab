@@ -1,10 +1,13 @@
-% show license
-disp('----------')
-lic = importdata('License.txt');
-for i = 1:numel(lic)
-    disp(lic{i});
+% try to show license
+try
+    disp('----------')
+    lic = importdata('License.txt');
+    for i = 1:numel(lic)
+        disp(lic{i});
+    end
+    disp('----------')
+catch e
 end
-disp('----------')
 
 %%sets all necessary paths
 % set path
@@ -26,7 +29,7 @@ addpath(...
     fullfile(folder, 'Sparsity'),...
     fullfile(folder, 'Sparsity', 'SparsityCore'),...
     fullfile(folder, 'Tikhonov')...
-);
+    );
 
 % set java path
 disp('Setting Java path...');
