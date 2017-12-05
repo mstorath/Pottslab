@@ -10,7 +10,7 @@ javaaddpath(jpath);
 if exist('static', 'var') && static
     % static path (is faster, requires restart to take effect)
     upath = userpath;
-    jpathfile = fullfile(upath(1:end-1), 'javaclasspath.txt');
+    jpathfile = fullfile(upath, 'javaclasspath.txt');
     disp(['Appending java class path to ' jpathfile]);
     pathExists = false;
     % check if path exists
