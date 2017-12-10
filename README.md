@@ -23,6 +23,9 @@ Left: A natural image; Right: Result using Potts model
 
 Texture segmentation using highdimensional curvelet-based feature vectors 
 
+Used as segmentation method in
+   - A. Breger et al., [Supervised learning and dimension reduction techniques for quantification of retinal fluid in optical coherence tomography images,](https://www.nature.com/articles/eye201761) Eye (2017).
+
 ### Joint image reconstruction and segmentation
 
 
