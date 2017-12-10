@@ -1,9 +1,9 @@
 # Pottslab 
 
 Pottslab is a Matlab/Java toolbox for the reconstruction of 
-jump-sparse and images using Potts functionals.
-Applications include denoising of piecewise constant signals and 
-image segmentation.
+jump-sparse signals and images using Potts functionals.
+Applications include denoising of piecewise constant signals, step detection and 
+segmentation of multichannel image.
 
 ## Application examples
 
