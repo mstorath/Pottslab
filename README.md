@@ -5,6 +5,8 @@ jump-sparse signals and images using Potts functionals.
 Applications include denoising of piecewise constant signals, step detection and 
 segmentation of multichannel image.
 
+-- See more on <a href="https://blogs.mathworks.com/pick/2017/12/07/minimizing-energy-to-segment-images-or-cluster-data/">Pick of the Week</a> by Mathworks --
+
 ## Application examples
 
 ### Segmentation of vector-valued images
@@ -13,7 +15,6 @@ segmentation of multichannel image.
    - Supports segmentation of vector-valued images (e.g. multispectral images, feature images)
    - Linear complexity in number of color channels
    - Label-free: No label discretization required
-
 
 ![Vector-valued segmentation](/Docs/titleImage.png)
 
@@ -77,6 +78,7 @@ Used as step detection algorithm in
         - Maybe you need to install Java 1.7 (see e.g. http://undocumentedmatlab.com/blog/using-java-7-in-matlab-r2013a-and-earlier)
 
 ## Plugins for Image Analysis GUIs
+Parts of Pottslab can be used without Matlab as pure Java plugins
    - [Icy plugin](http://icy.bioimageanalysis.org/plugin/Potts_Segmentation) - an interactive image segmentation plugin based on Pottslab (written by Vasileios Angelopoulos)
    - [ImageJ plugin](Plugins/PottsSegmentationJ_.jar) - an ImageJ frontend for Pottslab (written by Michael Kaul) 
 
