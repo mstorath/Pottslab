@@ -1,11 +1,11 @@
 # Pottslab 
 
 Pottslab is a Matlab/Java toolbox for the reconstruction of 
-jump-sparse signals and images using Potts functionals.
+jump-sparse signals and images using the Potts model (also known as "piecewise constant Mumford-Shah model" or "l0 gradient model").
 Applications include denoising of piecewise constant signals, step detection and 
 segmentation of multichannel image.
 
--- See more on <a href="https://blogs.mathworks.com/pick/2017/12/07/minimizing-energy-to-segment-images-or-cluster-data/">Pick of the Week</a> by Mathworks --
+-- See also the <a href="https://blogs.mathworks.com/pick/2017/12/07/minimizing-energy-to-segment-images-or-cluster-data/">Pick of the Week</a> by Mathworks --
 
 ## Application examples
 
@@ -66,11 +66,12 @@ Used as step detection algorithm in
 ## Installation 
 ### Quickstart:
    - Run the script "installPottslab.m", it should set all necessary paths
+   - For best performance, increase Java heap space in the Matlab preferences (MATLAB - General - Java heap memory)
    - Run a demo from the Demos folder
 
 ### Troubleshooting:
    * Problem: OutOfMemoryException
-   * Solution: Increase Java heap space in the Matlab preferences
+   * Solution: Increase Java heap space in the Matlab preferences (MATLAB - General - Java heap memory)
 
    * Problem: Undefined variable "pottslab" or class "pottslab.JavaTools.minL2Potts"
    * Solution: 
