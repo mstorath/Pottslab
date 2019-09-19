@@ -8,9 +8,12 @@ import java.io.IOException;
 
 public class RunMe {
     public static void main(String[] args) throws IOException {
-        BufferedImage image = ImageIO.read(new File("desert.jpg"));
-        PLImage img = PLImage.fromBufferedImage(image);
-        double gamma = 0.3;
+        if(args.length < 3) {
+            System.err.println("USAGE: java -jar pottslab.jar <input> <output.png> <gamma>");
+        }
+        PLImage img = PLImage.fromBufferedImage(ImageIO.read(new File(args[0])));
+        
+        double gamma = Double.valueOf(args[2]);
         double[][]weights = new double[img.mRow][img.mCol];
         for (int y = 0; y < weights.length; y++) {
             for (int x = 0; x < weights[y].length; x++) {
@@ -26,6 +29,6 @@ public class RunMe {
         double[] omega = new double[]{Math.sqrt(2.0)-1.0, 1.0-Math.sqrt(2.0)/2.0};
         PLImage img2 = JavaTools.minL2PottsADMM8(img, gamma, weights, muInit, muStep, stopTol,  verbose, multiThreaded, useADMM, omega);
         
-        ImageIO.write(img2.toBufferedImage(), "png", new File("output.png"));
+        ImageIO.write(img2.toBufferedImage(), "png", new File(args[1]));
     }
 }
