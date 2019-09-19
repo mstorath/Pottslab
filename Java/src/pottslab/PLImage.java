@@ -133,12 +133,23 @@ public class PLImage {
 
 	public BufferedImage toBufferedImage() {
 		final BufferedImage img = new BufferedImage(mRow, mCol, BufferedImage.TYPE_INT_RGB);
+		if(mLen == 1) {
 			for (int i = 0; i < mRow; i++) {
 				for (int j = 0; j < mCol; j++) {
 					float c = (float) Math.min(Math.abs(mData[i][j].get(0)), 1.0);
 					img.setRGB(i, j, new Color(c, c, c).getRGB());
 				}
 			}
+		} else {
+			for (int i = 0; i < mRow; i++) {
+				for (int j = 0; j < mCol; j++) {
+					float r = (float) Math.min(Math.abs(mData[i][j].get(0)), 1.0);
+					float g = (float) Math.min(Math.abs(mData[i][j].get(1)), 1.0);
+					float b = (float) Math.min(Math.abs(mData[i][j].get(2)), 1.0);
+					img.setRGB(i, j, new Color(r, g, b).getRGB());
+				}
+			}
+		}
 		return img;
 	}
 
