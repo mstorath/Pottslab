@@ -153,4 +153,18 @@ public class PLImage {
 		return img;
 	}
 
+	public static PLImage fromBufferedImage(BufferedImage image) {
+		double[][][] imgdata = new double[image.getWidth()][image.getHeight()][3];
+		float[] tmp = new float[3];
+		for(int i = 0; i < image.getWidth(); i++) {
+			for(int j = 0; j < image.getHeight(); j++) {
+				Color c = new Color(image.getRGB(i,j));
+				c.getRGBColorComponents(tmp);
+				for (int k = 0; k < 3; k++) {
+					imgdata[i][j][k] = tmp[k];
+				}
+			}
+		}
+		return new PLImage(imgdata);
+	}
 }
