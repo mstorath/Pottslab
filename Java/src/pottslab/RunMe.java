@@ -10,6 +10,7 @@ public class RunMe {
     public static void main(String[] args) throws IOException {
         if(args.length < 3) {
             System.err.println("USAGE: java -jar pottslab.jar <input> <output.png> <gamma>");
+            System.exit(1);
         }
         PLImage img = PLImage.fromBufferedImage(ImageIO.read(new File(args[0])));
         
