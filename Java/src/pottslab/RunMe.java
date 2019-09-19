@@ -9,9 +9,12 @@ import java.io.IOException;
 public class RunMe {
     public static void main(String[] args) throws IOException {
         if(args.length < 3) {
+            System.err.println("pottslab: Multilabel image segmentation based on the Potts model (aka piecewise constant Mumford-Shah model).");
+            System.err.println("Algorithm: M. Storath, A. Weinmann. \"Fast partitioning of vector-valued images\" SIAM Journal on Imaging Sciences, 2014");
             System.err.println("USAGE: java -jar pottslab.jar <input> <output.png> <gamma>");
             System.exit(1);
         }
+        
         PLImage img = PLImage.fromBufferedImage(ImageIO.read(new File(args[0])));
         
         double gamma = Double.valueOf(args[2]);
