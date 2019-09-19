@@ -108,15 +108,7 @@ public class PLImage {
 
 
     public void show() {
-	final BufferedImage img = new BufferedImage(mRow, mCol, BufferedImage.TYPE_INT_RGB);
-	Graphics2D g = (Graphics2D)img.getGraphics();
-	for(int i = 0; i < mRow; i++) {
-	    for(int j = 0; j < mCol; j++) {
-		float c = (float) Math.min(Math.abs(mData[i][j].get(0)), 1.0);
-		g.setColor(new Color(c, c, c));
-		g.fillRect(i, j, 1, 1);
-	    }
-	}
+		final BufferedImage img = toBufferedImage();
 
 	JFrame frame = new JFrame("Image test");
 	//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -138,5 +130,16 @@ public class PLImage {
 	frame.pack();
 	frame.setVisible(true);
     }
+
+	public BufferedImage toBufferedImage() {
+		final BufferedImage img = new BufferedImage(mRow, mCol, BufferedImage.TYPE_INT_RGB);
+			for (int i = 0; i < mRow; i++) {
+				for (int j = 0; j < mCol; j++) {
+					float c = (float) Math.min(Math.abs(mData[i][j].get(0)), 1.0);
+					img.setRGB(i, j, new Color(c, c, c).getRGB());
+				}
+			}
+		return img;
+	}
 
 }
