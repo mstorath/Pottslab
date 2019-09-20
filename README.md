@@ -64,13 +64,17 @@ Used as step detection algorithm in
    * A. Nord et al., [Catch bond drives stator mechanosensitivity in the bacterial flagellar motor](http://www.pnas.org/content/early/2017/11/27/1716002114.full), Proceedings of the National Academy of Sciences, 2017
    * A. Szorkovszky et al., [Assortative interactions revealed by sorting of animal groups](https://www.sciencedirect.com/science/article/pii/S0003347218301799), Animal Behaviour, 2018
 
-## Installation 
-### Quickstart:
+## Usage Instructions
+### Standalone usage from command line (only image plain image segmentation supported)
+   - Call "java -jar pottslab.jar <input> <output.png> <gamma>" where gamma is a positive real number, e.g. 0.1 (thanks to fxtentacle)
+
+### Installation for Matlab (all features usable)
+#### Quickstart:
    - Run the script "installPottslab.m", it should set all necessary paths
    - For best performance, increase Java heap space in the Matlab preferences (MATLAB - General - Java heap memory)
    - Run a demo from the Demos folder
 
-### Troubleshooting:
+#### Troubleshooting:
    * Problem: OutOfMemoryException
    * Solution: Increase Java heap space in the Matlab preferences (MATLAB - General - Java heap memory)
 
