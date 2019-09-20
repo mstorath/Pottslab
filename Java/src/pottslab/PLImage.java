@@ -108,15 +108,7 @@ public class PLImage {
 
 
     public void show() {
-	final BufferedImage img = new BufferedImage(mRow, mCol, BufferedImage.TYPE_INT_RGB);
-	Graphics2D g = (Graphics2D)img.getGraphics();
-	for(int i = 0; i < mRow; i++) {
-	    for(int j = 0; j < mCol; j++) {
-		float c = (float) Math.min(Math.abs(mData[i][j].get(0)), 1.0);
-		g.setColor(new Color(c, c, c));
-		g.fillRect(i, j, 1, 1);
-	    }
-	}
+		final BufferedImage img = toBufferedImage();
 
 	JFrame frame = new JFrame("Image test");
 	//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -139,4 +131,40 @@ public class PLImage {
 	frame.setVisible(true);
     }
 
+	public BufferedImage toBufferedImage() {
+		final BufferedImage img = new BufferedImage(mRow, mCol, BufferedImage.TYPE_INT_RGB);
+		if(mLen == 1) {
+			for (int i = 0; i < mRow; i++) {
+				for (int j = 0; j < mCol; j++) {
+					float c = (float) Math.min(Math.abs(mData[i][j].get(0)), 1.0);
+					img.setRGB(i, j, new Color(c, c, c).getRGB());
+				}
+			}
+		} else {
+			for (int i = 0; i < mRow; i++) {
+				for (int j = 0; j < mCol; j++) {
+					float r = (float) Math.min(Math.abs(mData[i][j].get(0)), 1.0);
+					float g = (float) Math.min(Math.abs(mData[i][j].get(1)), 1.0);
+					float b = (float) Math.min(Math.abs(mData[i][j].get(2)), 1.0);
+					img.setRGB(i, j, new Color(r, g, b).getRGB());
+				}
+			}
+		}
+		return img;
+	}
+
+	public static PLImage fromBufferedImage(BufferedImage image) {
+		double[][][] imgdata = new double[image.getWidth()][image.getHeight()][3];
+		float[] tmp = new float[3];
+		for(int i = 0; i < image.getWidth(); i++) {
+			for(int j = 0; j < image.getHeight(); j++) {
+				Color c = new Color(image.getRGB(i,j));
+				c.getRGBColorComponents(tmp);
+				for (int k = 0; k < 3; k++) {
+					imgdata[i][j][k] = tmp[k];
+				}
+			}
+		}
+		return new PLImage(imgdata);
+	}
 }
