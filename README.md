@@ -66,7 +66,7 @@ Used as step detection algorithm in
 
 ## Usage Instructions
 ### Standalone usage from command line (only image plain image segmentation supported)
-   - Call "java -jar pottslab.jar input output.png gamma" where gamma is a positive real number, e.g. 0.1 (thanks to fxtentacle)
+   - Call "java -jar pottslab-standalone.jar input output.png gamma" where gamma is a positive real number, e.g. 0.1 (thanks to fxtentacle)
 
 ### Installation for Matlab (all features usable)
 #### Quickstart:
