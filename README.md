@@ -5,7 +5,9 @@ jump-sparse signals and images using the Potts model (also known as "piecewise c
 Applications include denoising of piecewise constant signals, step detection and 
 segmentation of multichannel image.
 
--- See also the <a href="https://blogs.mathworks.com/pick/2017/12/07/minimizing-energy-to-segment-images-or-cluster-data/">Pick of the Week</a> by Mathworks --
+-- See also the <a href="https://blogs.mathworks.com/pick/2017/12/07/minimizing-energy-to-segment-images-or-cluster-data/">Pick of the Week</a> on [![View Pottslab - Multilabel segmentation of vectorial data on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://de.mathworks.com/matlabcentral/fileexchange/62641-pottslab-multilabel-segmentation-of-vectorial-data) --
+
+
 
 ## Application examples
 
