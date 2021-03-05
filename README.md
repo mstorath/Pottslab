@@ -87,7 +87,7 @@ Used as step detection algorithm in
 
 ## Plugins for Image Analysis GUIs
 Parts of Pottslab can be used without Matlab as pure Java plugins
-   - [Icy plugin](http://icy.bioimageanalysis.org/plugin/Potts_Segmentation) - an interactive image segmentation plugin based on Pottslab (written by Vasileios Angelopoulos)
+   - [Icy plugin](http://icy.bioimageanalysis.org/plugin/potts-segmentation/) - an interactive image segmentation plugin based on Pottslab (written by Vasileios Angelopoulos)
    - [ImageJ plugin](Plugins/PottsSegmentationJ_.jar) - an ImageJ frontend for Pottslab (written by Michael Kaul) 
 
 ## References
