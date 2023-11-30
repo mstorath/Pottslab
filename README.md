@@ -106,4 +106,11 @@ Parts of Pottslab can be used without Matlab as pure Java plugins
     IEEE Transactions on Signal Processing, 2014
 
 
+## See also
+- [PALMS Image Segmentation for piecewise affine linear estimation](https://github.com/lu-kie/PALMS_ImagePartitioning)
+- [Higher order Mumford-Shah models for piecewise smooth signals](https://github.com/lu-kie/HOMS_SignalProcessing)
+- [Smoothing splines for discontinuous signals](https://github.com/mstorath/CSSD)
+- [Mumford-Shah regularization for piecewise smooth images](https://github.com/mstorath/MumfordShah2D)
+- [L1 TV for robust piecewise constant signals](https://github.com/mstorath/L1TV)
+
   
