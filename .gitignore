@@ -1,0 +1,29 @@
+# Rust build artifacts
+target/
+Cargo.lock.bak
+
+# Compiled Python extension (platform-specific; built by CI)
+pottslab/_core*.so
+pottslab/_core*.pyd
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# macOS
+.DS_Store
+
+# Distribution / packaging
+dist/
+*.egg-info/
+.eggs/
+
+# Editors / IDEs
+.vscode/
+.idea/
+*.swp
+
+# Jupyter
+.ipynb_checkpoints/

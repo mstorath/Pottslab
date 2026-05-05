@@ -1,0 +1,111 @@
+name: Build and publish wheels
+
+on:
+  push:
+    tags:
+      - "v*"          # run on version tags, e.g. v1.0.1
+  workflow_dispatch:  # allow manual runs from the Actions UI
+
+jobs:
+  # ── Build platform wheels ──────────────────────────────────────────────────
+  build_wheels:
+    name: Build ${{ matrix.target }} wheel
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # Linux — x86_64 (manylinux, covers most servers and desktops)
+          - os: ubuntu-latest
+            target: x86_64
+            manylinux: auto
+
+          # Linux — aarch64 (Raspberry Pi, AWS Graviton, Apple M-series via
+          # emulation; QEMU is set up automatically by maturin-action)
+          - os: ubuntu-latest
+            target: aarch64
+            manylinux: auto
+
+          # macOS — Intel
+          - os: macos-13
+            target: x86_64
+
+          # macOS — Apple Silicon
+          - os: macos-14
+            target: aarch64
+
+          # Windows — x86_64
+          - os: windows-latest
+            target: x86_64
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build wheels
+        uses: PyO3/maturin-action@v1
+        with:
+          target: ${{ matrix.target }}
+          manylinux: ${{ matrix.manylinux || '' }}
+          # Build for every supported CPython interpreter.
+          # PyPy is excluded because PyO3 support requires extra setup.
+          args: >-
+            --release
+            --out dist
+            --interpreter 3.9 3.10 3.11 3.12 3.13
+
+      - name: Upload wheel artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: wheels-${{ matrix.target }}-${{ matrix.os }}
+          path: dist/*.whl
+
+  # ── Build source distribution ──────────────────────────────────────────────
+  build_sdist:
+    name: Build source distribution
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build sdist
+        uses: PyO3/maturin-action@v1
+        with:
+          command: sdist
+          args: --out dist
+
+      - name: Upload sdist artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sdist
+          path: dist/*.tar.gz
+
+  # ── Publish to PyPI ────────────────────────────────────────────────────────
+  publish:
+    name: Publish to PyPI
+    runs-on: ubuntu-latest
+    needs: [build_wheels, build_sdist]
+    # Only publish on version-tag pushes, not on workflow_dispatch
+    if: startsWith(github.ref, 'refs/tags/v')
+    # Requires an environment named "pypi" configured in the repo settings
+    # with PyPI as a trusted publisher (no API token needed).
+    environment:
+      name: pypi
+      url: https://pypi.org/project/pottslab/
+    permissions:
+      id-token: write   # required for OIDC trusted publishing
+
+    steps:
+      - name: Download all wheel and sdist artifacts
+        uses: actions/download-artifact@v4
+        with:
+          merge-multiple: true
+          path: dist
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        # Uses PyPI OIDC trusted publishing — no API token required.
+        # Set up at: https://pypi.org/manage/account/publishing/
+        # Project name: pottslab
+        # Owner:        mstorath
+        # Repository:   Pottslab
+        # Workflow:     build_wheels.yml
+        # Environment:  pypi

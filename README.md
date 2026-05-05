@@ -1,11 +1,46 @@
-# Pottslab 
+# Pottslab
 
-Pottslab is a Matlab/Java toolbox for the reconstruction of 
+Pottslab is a Matlab/Java toolbox for the reconstruction of
 jump-sparse signals and images using the Potts model (also known as "piecewise constant Mumford-Shah model" or "l0 gradient model").
-Applications include denoising of piecewise constant signals, step detection and 
-segmentation of multichannel image.
+Applications include denoising of piecewise constant signals, step detection and
+segmentation of multichannel images.
 
 -- See also the <a href="https://blogs.mathworks.com/pick/2017/12/07/minimizing-energy-to-segment-images-or-cluster-data/">Pick of the Week</a> on [![View Pottslab - Multilabel segmentation of vectorial data on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://de.mathworks.com/matlabcentral/fileexchange/62641-pottslab-multilabel-segmentation-of-vectorial-data) --
+
+---
+
+## Python/Rust port — created by a Claude coding agent
+
+A **Python package** (`pottslab`) with a Rust performance core was generated from
+this repository by [Claude Sonnet](https://www.anthropic.com/claude) (Anthropic's
+AI coding agent) in 2026. It exposes the same algorithms through a clean,
+type-annotated Python API backed by compiled Rust (via PyO3) instead of the
+original Java JAR.
+
+**What the agent did:**
+
+- Ported all time-critical algorithms from Java to Rust (`src/`):
+  `L2Potts.java` → `l2potts.rs`, `IndexedLinkedHistogram.java` → `l1potts.rs`,
+  `PLProcessor.java` → `processor.rs`, `JavaTools.java` ADMM → `admm.rs`
+- Ported all MATLAB helper modules to Python (`pottslab/`):
+  1D/2D Potts solvers, inverse Potts, Tikhonov regularisation, sparsity, utilities
+- **Found and fixed an off-by-one bug** in the weighted-median computation inside
+  `IndexedLinkedHistogram` (both in the new Rust port and in the original
+  `Java/src/pottslab/IndexedLinkedHistogram.java`). The bug caused the L1-Potts DP
+  to occasionally prefer a suboptimal multi-jump solution over the correct
+  constant-segment solution on odd-length inputs.
+- Eliminated two O(n²) allocation hot-spots in the Rust L1-Potts solver (arena
+  cloning and per-iteration `Vec` allocation), recovering the performance
+  advantage over the JVM at typical signal lengths.
+- Wrote 418 tests covering correctness, brute-force cross-validation,
+  numerical precision, properties, edge cases, and input-validation guards.
+- Built a standalone Java benchmark harness (`Java/src/pottslab/Benchmark.java`)
+  and Python benchmark script (`benchmark.py`) for direct Java-vs-Rust comparison.
+
+See [`README_PYTHON.md`](README_PYTHON.md) for installation, API reference, and
+performance figures. See [`PORTED_BY.md`](PORTED_BY.md) for full attribution.
+
+---
 
 
 

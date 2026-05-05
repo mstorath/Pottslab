@@ -167,13 +167,20 @@ public class IndexedLinkedHistogram {
 	*/
 	
 	// determine median
+	// Fix: use ">=" so that the element whose cumulative weight first reaches
+	// or exceeds half the total is taken as the median (lower-median convention).
+	// The original "> twh → median = iterator.prev" was off by one for odd-weight
+	// inputs: it pointed to the node before the true median, inflating the
+	// full-range deviation (deviations[0]) and causing the DP to sometimes
+	// prefer a sub-optimal multi-jump solution over the correct constant one.
 	iterator = first;
 	double wbm = 0;
 	double twh = totalWeight/2.0;
+	median = first;
 	while (iterator != null) {
 	    wbm += iterator.weight;
-	    if (wbm > twh)  {
-		median = iterator.prev;
+	    if (wbm >= twh)  {
+		median = iterator;
 		break;
 	    }
 	    iterator = iterator.next;

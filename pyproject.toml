@@ -1,0 +1,46 @@
+[build-system]
+requires = ["maturin>=1.4,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "pottslab"
+version = "1.0.0"
+description = "Potts model signal/image processing — Python/Rust port of MATLAB/Java pottslab (Storath & Weinmann)"
+readme = "README_PYTHON.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+keywords = ["potts", "image-processing", "segmentation", "denoising", "signal-processing", "piecewise-constant"]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Rust",
+  "Topic :: Scientific/Engineering :: Image Processing",
+  "Topic :: Scientific/Engineering :: Mathematics",
+]
+dependencies = ["numpy>=1.20", "scipy>=1.7"]
+authors = [
+  {name = "Martin Storath"},
+  {name = "Andreas Weinmann"},
+]
+
+[project.urls]
+Homepage = "https://github.com/mstorath/Pottslab"
+Repository = "https://github.com/mstorath/Pottslab"
+Changelog = "https://github.com/mstorath/Pottslab/blob/main/CHANGELOG.md"
+"Bug Tracker" = "https://github.com/mstorath/Pottslab/issues"
+
+[tool.maturin]
+python-source = "."
+module-name = "pottslab._core"
+include = [{ path = "LICENSE", format = "wheel" }]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

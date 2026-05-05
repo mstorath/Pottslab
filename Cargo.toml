@@ -1,0 +1,24 @@
+[package]
+name = "_pottslab_core"
+version = "1.0.0"
+edition = "2021"
+description = "Rust core for pottslab Python package — ported from Java by Claude Sonnet coding agent (Anthropic, 2026)"
+authors = [
+    "Martin Storath <storath@gmail.com> (original Java)",
+    "Andreas Weinmann (original Java)",
+    "Claude Sonnet coding agent, Anthropic (Rust port, 2026)"
+]
+
+[lib]
+name = "_pottslab_core"
+crate-type = ["cdylib"]
+
+[dependencies]
+pyo3 = { version = "0.22", features = ["extension-module"] }
+numpy = "0.22"
+ndarray = { version = "0.16", features = ["rayon"] }
+rayon = "1.10"
+
+[profile.release]
+opt-level = 3
+lto = true
