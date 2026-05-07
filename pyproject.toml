@@ -32,10 +32,10 @@ authors = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/mstorath/Pottslab"
-Repository = "https://github.com/mstorath/Pottslab"
-Changelog = "https://github.com/mstorath/Pottslab/blob/main/CHANGELOG.md"
-"Bug Tracker" = "https://github.com/mstorath/Pottslab/issues"
+Homepage = "https://github.com/mstorath/pottslab"
+Repository = "https://github.com/mstorath/pottslab"
+Changelog = "https://github.com/mstorath/pottslab/blob/main/CHANGELOG.md"
+"Bug Tracker" = "https://github.com/mstorath/pottslab/issues"
 
 [tool.maturin]
 python-source = "."

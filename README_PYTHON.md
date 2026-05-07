@@ -2,7 +2,7 @@
 
 Python package for reconstructing jump-sparse signals and images using the
 **Potts model** (piecewise-constant Mumford-Shah / L0-gradient model).
-Port of the original [MATLAB/Java pottslab](https://github.com/mstorath/Pottslab)
+Port of the original [MATLAB/Java pottslab](https://github.com/mstorath/pottslab)
 by Martin Storath & Andreas Weinmann.
 
 Time-critical algorithms are implemented in Rust (via PyO3); the Python layer
@@ -289,7 +289,7 @@ If you use this package in research, please cite the original pottslab work:
 ## Attribution
 
 Original library: **pottslab** by Martin Storath & Andreas Weinmann
-(MIT licence, https://github.com/mstorath/Pottslab).
+(MIT licence, https://github.com/mstorath/pottslab).
 
 This Python/Rust port was written by **Claude Sonnet** (Anthropic's AI coding
 agent), 2026. See [`PORTED_BY.md`](PORTED_BY.md) for the full list of what was

@@ -45,6 +45,11 @@ def _l2potts_vv_inplace(data, vec_len, weights, gamma):
     data    — flat array, length n * vec_len, modified in-place
     weights — 1-D weight array of length n, or None for uniform weights
     gamma   — jump penalty
+
+    Internal helper. Skips the copy that the public ``solve_l2_potts_*``
+    functions take at entry; intended for callers that own their buffer
+    (e.g. the 2D ADMM driver, which mutates views into its own working
+    arrays row-by-row / column-by-column / along diagonals).
     """
     n = len(data) // vec_len
     if n == 0:
@@ -167,17 +172,24 @@ def _apply_anti_diag(img, weights_2d, gamma):
 # ─────────────────────────────────────────────────────────────────────────────
 
 def solve_l2_potts_1d(f, gamma, weights=None):
-    """O(n²) L2-Potts DP for a scalar 1-D signal."""
-    data = np.ascontiguousarray(f, dtype=np.float64)
+    """O(n²) L2-Potts DP for a scalar 1-D signal. Input ``f`` is not mutated.
+
+    Always copies at entry to match the Rust core's contract (PyO3 hands the
+    inner DP a fresh buffer).  Callers that own their buffer and want to
+    avoid the copy can use the internal ``_l2potts_vv_inplace`` helper.
+    """
+    data = np.array(f, dtype=np.float64, copy=True).ravel()
     _l2potts_vv_inplace(data, 1, weights, gamma)
     return data
 
 
 def solve_l2_potts_vv(f, gamma, weights=None):
-    """O(n²) L2-Potts DP for a vector-valued signal (n, channels)."""
+    """O(n²) L2-Potts DP for a vector-valued signal (n, channels). Input
+    ``f`` is not mutated; see ``solve_l2_potts_1d`` for the rationale.
+    """
     f = np.asarray(f, dtype=np.float64)
     n, ch = f.shape
-    data = np.ascontiguousarray(f.ravel())
+    data = np.array(f, dtype=np.float64, copy=True).ravel()
     _l2potts_vv_inplace(data, ch, weights, gamma)
     return data.reshape(n, ch)
 
