@@ -68,6 +68,7 @@ references:
         orcid: "https://orcid.org/0000-0003-1427-0776"
       - family-names: Demaret
         given-names: Laurent
+        orcid: "https://orcid.org/0000-0002-1228-9396"
     journal: "SIAM Journal on Numerical Analysis"
     volume: 53
     issue: 1
@@ -102,6 +103,7 @@ references:
         orcid: "https://orcid.org/0000-0002-4969-7609"
       - family-names: Demaret
         given-names: Laurent
+        orcid: "https://orcid.org/0000-0002-1228-9396"
     journal: "IEEE Transactions on Signal Processing"
     volume: 62
     issue: 14
