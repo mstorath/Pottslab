@@ -26,11 +26,10 @@ jobs:
             target: aarch64
             manylinux: auto
 
-          # macOS — Intel
-          - os: macos-13
-            target: x86_64
-
           # macOS — Apple Silicon
+          # Intel macOS (macos-13) was dropped: GitHub-hosted Intel runners are
+          # being retired and queue depth made the job time out at the 24h
+          # maximum. Intel-Mac users can install from the sdist.
           - os: macos-14
             target: aarch64
 
@@ -40,6 +39,22 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
+      # Native Windows/macOS runners only have one Python on PATH by default,
+      # so maturin's --interpreter 3.9..3.13 lookup fails. Pre-installing all
+      # five versions via setup-python adds them to PATH. The manylinux
+      # container build skips this step (the host setup doesn't reach inside
+      # the container, which already ships every CPython we need).
+      - name: Set up Python (native runners only)
+        if: matrix.manylinux != 'auto'
+        uses: actions/setup-python@v5
+        with:
+          python-version: |
+            3.9
+            3.10
+            3.11
+            3.12
+            3.13
 
       - name: Build wheels
         uses: PyO3/maturin-action@v1
