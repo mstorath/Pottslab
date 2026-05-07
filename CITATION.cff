@@ -1,0 +1,60 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite both the software and the associated paper below."
+title: "Pottslab: Multilabel image segmentation based on the Potts model"
+abstract: "Unsupervised multilabel image segmentation (color, gray, and multichannel) based on the Potts model — also known as the piecewise-constant Mumford-Shah model. Provides MATLAB / Java implementations and a Python package backed by a Rust core."
+type: software
+url: "https://github.com/mstorath/Pottslab"
+repository-code: "https://github.com/mstorath/Pottslab"
+license: MIT
+authors:
+  - family-names: Storath
+    given-names: Martin
+    email: martin.storath@thws.de
+    orcid: "https://orcid.org/0000-0003-1427-0776"
+    affiliation: "Lab for Mathematical Methods in Computer Vision and Machine Learning, Technische Hochschule Würzburg-Schweinfurt"
+  - family-names: Weinmann
+    given-names: Andreas
+    email: andreas.weinmann@h-da.de
+    orcid: "https://orcid.org/0000-0002-4969-7609"
+    affiliation: "Department of Mathematics and Natural Sciences, Hochschule Darmstadt"
+preferred-citation:
+  type: article
+  title: "Joint image reconstruction and segmentation using the Potts model"
+  authors:
+    - family-names: Storath
+      given-names: Martin
+      orcid: "https://orcid.org/0000-0003-1427-0776"
+    - family-names: Weinmann
+      given-names: Andreas
+      orcid: "https://orcid.org/0000-0002-4969-7609"
+    - family-names: Frikel
+      given-names: Jürgen
+      orcid: "https://orcid.org/0000-0002-2391-9859"
+    - family-names: Unser
+      given-names: Michael
+      orcid: "https://orcid.org/0000-0003-1248-2513"
+  journal: "Inverse Problems"
+  volume: 31
+  issue: 2
+  start: "025003"
+  year: 2015
+  publisher:
+    name: "IOP Publishing"
+  doi: "10.1088/0266-5611/31/2/025003"
+references:
+  - type: article
+    title: "Fast partitioning of vector-valued images"
+    authors:
+      - family-names: Storath
+        given-names: Martin
+        orcid: "https://orcid.org/0000-0003-1427-0776"
+      - family-names: Weinmann
+        given-names: Andreas
+        orcid: "https://orcid.org/0000-0002-4969-7609"
+    journal: "SIAM Journal on Imaging Sciences"
+    volume: 7
+    issue: 3
+    start: 1826
+    end: 1852
+    year: 2014
+    doi: "10.1137/130950367"
