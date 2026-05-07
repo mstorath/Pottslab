@@ -43,6 +43,39 @@ preferred-citation:
   doi: "10.1088/0266-5611/31/2/025003"
 references:
   - type: article
+    title: "Iterative Potts and Blake-Zisserman minimization for the recovery of functions with discontinuities from indirect measurements"
+    authors:
+      - family-names: Weinmann
+        given-names: Andreas
+        orcid: "https://orcid.org/0000-0002-4969-7609"
+      - family-names: Storath
+        given-names: Martin
+        orcid: "https://orcid.org/0000-0003-1427-0776"
+    journal: "Proceedings of the Royal Society A: Mathematical, Physical and Engineering Sciences"
+    volume: 471
+    issue: 2176
+    start: "20140638"
+    year: 2015
+    doi: "10.1098/rspa.2014.0638"
+  - type: article
+    title: "The L1-Potts functional for robust jump-sparse reconstruction"
+    authors:
+      - family-names: Weinmann
+        given-names: Andreas
+        orcid: "https://orcid.org/0000-0002-4969-7609"
+      - family-names: Storath
+        given-names: Martin
+        orcid: "https://orcid.org/0000-0003-1427-0776"
+      - family-names: Demaret
+        given-names: Laurent
+    journal: "SIAM Journal on Numerical Analysis"
+    volume: 53
+    issue: 1
+    start: 644
+    end: 673
+    year: 2015
+    doi: "10.1137/120896256"
+  - type: article
     title: "Fast partitioning of vector-valued images"
     authors:
       - family-names: Storath
@@ -58,3 +91,21 @@ references:
     end: 1852
     year: 2014
     doi: "10.1137/130950367"
+  - type: article
+    title: "Jump-sparse and sparse recovery using Potts functionals"
+    authors:
+      - family-names: Storath
+        given-names: Martin
+        orcid: "https://orcid.org/0000-0003-1427-0776"
+      - family-names: Weinmann
+        given-names: Andreas
+        orcid: "https://orcid.org/0000-0002-4969-7609"
+      - family-names: Demaret
+        given-names: Laurent
+    journal: "IEEE Transactions on Signal Processing"
+    volume: 62
+    issue: 14
+    start: 3654
+    end: 3666
+    year: 2014
+    doi: "10.1109/TSP.2014.2329263"
