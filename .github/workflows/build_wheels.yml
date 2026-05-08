@@ -153,3 +153,22 @@ jobs:
           body_path: release-notes.md
           generate_release_notes: true
           files: dist/*
+
+      - name: Verify uploaded package (real install + import + call)
+        # Defends against a class of silent failures where PyPI accepted
+        # the upload but the package isn't actually usable (renamed module,
+        # missing __init__, broken native binding, ABI mismatch, etc.).
+        # CMF v0.1.7 added this after the previous verify step had been
+        # silently passing for years against an unrelated placeholder
+        # package — see devcontainer reports/11-cmf-v0.1.7-release.md.
+        run: |
+          # Brief delay so PyPI's CDN settles the new version.
+          sleep 30
+          pip install --no-cache-dir --index-url https://pypi.org/simple/ pottslab
+          python -c "
+          import numpy as np, pottslab
+          from importlib.metadata import version
+          out = pottslab.min_l2_potts(np.zeros(8), gamma=0.1)
+          assert out.shape == (8,), f'unexpected shape {out.shape}'
+          print(f'pottslab {version(\"pottslab\")} verify OK')
+          "
