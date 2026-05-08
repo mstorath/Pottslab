@@ -106,9 +106,13 @@ jobs:
       name: pypi
       url: https://pypi.org/project/pottslab/
     permissions:
-      id-token: write   # required for OIDC trusted publishing
+      id-token: write    # required for OIDC trusted publishing
+      contents: write    # required for the GitHub Release step below
 
     steps:
+      - name: Checkout (for CHANGELOG.md)
+        uses: actions/checkout@v4
+
       - name: Download all wheel and sdist artifacts
         uses: actions/download-artifact@v4
         with:
@@ -124,3 +128,28 @@ jobs:
         # Repository:   Pottslab
         # Workflow:     build_wheels.yml
         # Environment:  pypi
+
+      - name: Extract release notes from CHANGELOG.md
+        # Pulls the section bounded by `## <ver>` (bracket-tolerant) and
+        # the next `## ` heading. Falls back to a tag-commits link if
+        # the heading is missing or CHANGELOG.md doesn't exist.
+        run: |
+          VER="${GITHUB_REF_NAME#v}"
+          if [ -f CHANGELOG.md ]; then
+            awk -v ver="$VER" '
+              $0 ~ "^## \\[?" ver "\\]?( |$)" { found=1; next }
+              found && /^## / { exit }
+              found { print }
+            ' CHANGELOG.md > release-notes.md
+          fi
+          [ -s release-notes.md ] || echo "See [tag commits](https://github.com/${GITHUB_REPOSITORY}/commits/${GITHUB_REF_NAME})." > release-notes.md
+
+      - name: Create GitHub Release
+        # Idempotent: updates an existing Release for this tag instead
+        # of erroring, so manual pre-creation never blocks a re-run.
+        uses: softprops/action-gh-release@v2
+        with:
+          name: ${{ github.ref_name }}
+          body_path: release-notes.md
+          generate_release_notes: true
+          files: dist/*
