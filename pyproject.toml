@@ -4,7 +4,7 @@ build-backend = "maturin"
 
 [project]
 name = "pottslab"
-version = "1.0.0"
+version = "1.0.1"
 description = "Potts model signal/image processing — Python/Rust port of MATLAB/Java pottslab (Storath & Weinmann)"
 readme = "README_PYTHON.md"
 license = {text = "MIT"}

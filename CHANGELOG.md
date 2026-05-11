@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.0.1 — 2026-05-11
+
+Metadata maintenance release. No algorithmic changes.
+
+- README harmonised across the lab repo family: badge block, restructured Quickstart (Python first, MATLAB second, standalone third), standardised "See also" section linking the five sibling repos and two external related projects.
+- AI-port narrative moved from the README's lead to a discreet "Project history" footer.
+- Duplicate `License.txt` deleted (was identical to `LICENSE`).
+- `CITATION.cff` populated with `version` and `date-released` fields so citation tooling reads from the file directly rather than falling back to GitHub Releases.
+- Andreas Weinmann's email updated to `andreas.weinmann@thws.de` in `CITATION.cff`.
+- Post-publish verify step added to the release workflow (installs the published wheel and runs an import + call smoke test).
+- Auto-create GitHub Release on tag push (alongside PyPI publish).
+
 ## 1.0.0 — 2026-05-05
 
 First stable release of the Python/Rust port.
