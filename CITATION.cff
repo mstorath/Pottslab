@@ -1,6 +1,8 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite both the software and the associated paper below."
 title: "Pottslab: Multilabel image segmentation based on the Potts model"
+version: 1.0.0
+date-released: 2026-05-07
 abstract: "Unsupervised multilabel image segmentation (color, gray, and multichannel) based on the Potts model — also known as the piecewise-constant Mumford-Shah model. Provides MATLAB / Java implementations and a Python package backed by a Rust core."
 type: software
 url: "https://github.com/mstorath/Pottslab"
