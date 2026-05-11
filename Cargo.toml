@@ -1,6 +1,6 @@
 [package]
 name = "_pottslab_core"
-version = "1.0.0"
+version = "1.0.1"
 edition = "2021"
 description = "Rust core for pottslab Python package — ported from Java by Claude Sonnet coding agent (Anthropic, 2026)"
 authors = [

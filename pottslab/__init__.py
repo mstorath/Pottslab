@@ -55,7 +55,7 @@ References
    Potts functionals." IEEE Transactions on Signal Processing, 2014.
 """
 
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 __original_authors__ = "Martin Storath, Andreas Weinmann"
 __ported_by__ = (
     "Claude Sonnet coding agent (Anthropic, 2026) — "
